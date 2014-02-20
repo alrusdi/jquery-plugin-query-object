@@ -88,6 +88,13 @@ Features
       index.php?debug
       ```  
       implies a query string variable 'debug' set to true
-   
+   3. **Improved number parsing**
+      Parsing features introduced in version 1.2 include better support for number formats and differentiating between number-looking strings and numbers.
+   4. **Array syntax parsing**
+      Array shaped query string keys will create an array in the internal jQuery.query structure and using square brackets without an index will generate an array dynamically.
+   5. **Ampersand or semi-colon delimiters**
+      Because it has been requested of me, the parser now supports both semi-colons and ampersands as delimiting marks between key value pairs.
+   6. **Hash parameter parsing**
+      Because it has been requested of me, the parser now supports both query string parsing and parsing of query string like strings in the url hash.
 
  
