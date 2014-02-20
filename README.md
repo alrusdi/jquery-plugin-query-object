@@ -98,3 +98,46 @@ Features
       Because it has been requested of me, the parser now supports both query string parsing and parsing of query string like strings in the url hash.
 
  
+Customization
+-------------------------
+
+There are now some customizations which can be done, mostly dealing with parsing and with toString generation. The options are set by creating jQuery.query as an object of settings before including the jQuery.query source code on your page as seen below:
+
+```
+<script type="text/javascript">
+var jQuery.query = { numbers: false, hash: true };
+</script>
+<script type="text/javascript" src="jquery.query.js"></script>
+```
+
+When initializing, the query object will check the currently existing jQuery.query for any settings it can use. The settings are:
+
+   1. **separator**  
+      The default value for this setting is '&' as that is the standard for parameter division. However, when working in xml, some prefer to use a semi-colon to separate parameters to avoid overuse of &amp;. The parser has been updated to read semi-colons as delimiters but to output generated query strings with a semi-colon you need to set this setting to ';'
+
+   2. **space**  
+      The default value for this is true as most people prefer plus signs in query strings to be converted to spaces. It's standard practice to use plus signs to represent spaces in query strings to avoid the dreaded %20 so the parser has been updated and, by default, converts plus signs to spaces. However, this feature can be disabled if you decide you need literal plus signs in your query strings.
+
+   3. **suffix**  
+      The default for this is true. If set to true, any arrays, when outputted to a query string will be suffixed with "[]" to show them as an array more clearly. Some may prefer to generate array strings without the square brackets and can set this value to false. I set this to true by default because I prefer one element arrays to be unambiguously arrays when generated in a query string.
+
+   4. **hash**  
+      The default for this is false. If set to true, the output of a query string will be prefixed by a hash '#' rather than a question mark. Given the interest in parsing hash parameters along with query string parameters, this seemed like a good setting to introduce.
+
+   5. **prefix**  
+      The default for this is true. If set to false, the output of a query string is not prefixed by a hash or question mark.
+
+   6. **numbers**  
+      The default for this is true. If set to false, numbers in query strings will NOT be parsed. This helps when left-hand zeros in a number are significant for some reason.
+
+Limitations
+-------------------------
+
+* **Direct Object Access**  
+    Direct object access has been removed from this plugin as it wasn't symmetric (ie it was only usable for getting, not setting) and for safety reasons.
+
+* **Boolean false Values**  
+    Because true values are parsed and represented as attributes without distinct values, false is represented as a lack of attribute. Because of this, attempting to set an attribute to 'false' will result in its removal from the object. This is a design decision which may be made a customizable setting in the future.
+
+* **Key Complexity**  
+    Version 2.0 and above now supports deep objects just as well as PHP's built in $_GET object.
