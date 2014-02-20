@@ -1,8 +1,6 @@
 jquery-plugin-query-object
 ==========================
 
-Original docs http://www.jquery-plugins.info/query-string-object-00014864.htm
-
 Query String Modification and Creation for jQuery
 
 This extension creates a singleton query string object for quick and readable query 
