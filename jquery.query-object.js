@@ -92,9 +92,6 @@ new function(settings) {
             
             val = (!val && val !== 0) ? true : val;
             
-            if (val !== false && val !== true && typeof val != 'number')
-              val = val;
-            
             self.SET(key, val);
           });
         });
