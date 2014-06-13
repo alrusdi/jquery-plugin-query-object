@@ -80,6 +80,7 @@ new function(settings) {
       queryObject: true,
       parseNew: function(){
         var self = this;
+        self.keys = {};
         jQuery.each(arguments, function() {
           var q = "" + this;
           q = q.replace(/^[?#]/,''); // remove any leading ? || #
