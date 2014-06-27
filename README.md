@@ -41,6 +41,11 @@ var emptyQuery = $.query.empty();
 > ""
 var stillTheSame = $.query.copy();
 > ?action=view&section=info&id=123
+In case you dynamically change document.location via history API
+var parsedQuery = $.query.parseNew("?foo=bar", "bar=foo");
+> ?foo=bar&bar=foo
+In case you are using History.js
+var parsedQuery = $.query.parseNew(location.search, location.hash.split("?").length > 1 ? location.hash.split("?")[1] : "");
 ```
 
 Features

@@ -16,7 +16,7 @@ new function(settings) {
   var $prefix = settings.prefix === false ? false : true;
   var $hash = $prefix ? settings.hash === true ? "#" : "?" : "";
   var $numbers = settings.numbers === false ? false : true;
-  
+
   jQuery.query = new function() {
     var is = function(o, t) {
       return o != undefined && o !== null && (!!t ? o.constructor == t : true);
@@ -71,6 +71,16 @@ new function(settings) {
           self.SET(key, val);
         });
       } else {
+        self.parseNew.apply(self, arguments);
+      }
+      return self;
+    };
+    
+    queryObject.prototype = {
+      queryObject: true,
+      parseNew: function(){
+        var self = this;
+        self.keys = {};
         jQuery.each(arguments, function() {
           var q = "" + this;
           q = q.replace(/^[?#]/,''); // remove any leading ? || #
@@ -95,12 +105,8 @@ new function(settings) {
             self.SET(key, val);
           });
         });
-      }
-      return self;
-    };
-    
-    queryObject.prototype = {
-      queryObject: true,
+        return self;
+      },
       has: function(key, type) {
         var value = this.get(key);
         return is(value, type);
