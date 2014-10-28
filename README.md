@@ -5,7 +5,12 @@ Query String Modification and Creation for jQuery
 
 This extension creates a singleton query string object for quick and readable query 
 string modification and creation. This plugin provides a simple way of taking a page's 
-query string and creating a modified version of this with little code.
+query string and creating a modified version of this with little code.  
+
+Disclaimer  
+-------------------------
+
+There are many URI manipulation libraries for JS and before use jquery-query-object you should look at least to https://github.com/medialize/URI.js because it much more feature rich, tested and better documented. I support  jquery-query-object because i need it for my existent projects and i want to maintain reference to it on plugins.jquery.com - no other reasons to use it but not URI.js
 
 Example
 -------------------------
