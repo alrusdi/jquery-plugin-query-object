@@ -123,7 +123,7 @@ When initializing, the query object will check the currently existing jQuery.que
    1. **separator**  
       The default value for this setting is '&' as that is the standard for parameter division. However, when working in xml, some prefer to use a semi-colon to separate parameters to avoid overuse of &amp;. The parser has been updated to read semi-colons as delimiters but to output generated query strings with a semi-colon you need to set this setting to ';'
 
-   2. **space**  
+   2. **spaces**  
       The default value for this is true as most people prefer plus signs in query strings to be converted to spaces. It's standard practice to use plus signs to represent spaces in query strings to avoid the dreaded %20 so the parser has been updated and, by default, converts plus signs to spaces. However, this feature can be disabled if you decide you need literal plus signs in your query strings.
 
    3. **suffix**  
