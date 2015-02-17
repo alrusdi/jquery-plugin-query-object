@@ -138,7 +138,15 @@ new function(settings) {
       set: function(key, val) {
         return this.copy().SET(key, val);
       },
-      REMOVE: function(key) {
+      REMOVE: function(key, val) {
+        if (val) {
+          var target = this.GET(key);
+          if (is(target, Array)) {
+            var index = $.inArray(val, target);
+            key = target.splice(index, 1);
+            key = key[index];
+          }
+        }
         return this.SET(key, null).COMPACT();
       },
       remove: function(key) {
