@@ -149,8 +149,8 @@ new function(settings) {
         }
         return this.SET(key, null).COMPACT();
       },
-      remove: function(key) {
-        return this.copy().REMOVE(key);
+      remove: function(key, val) {
+        return this.copy().REMOVE(key, val);
       },
       EMPTY: function() {
         var self = this;
