@@ -42,6 +42,12 @@ var notOldQuery = $.query.toString();
 > "?action=view&section=info&id=123&type=string"
 var oldQueryAgain = $.query.REMOVE("type");
 > ?action=view&section=info&id=123
+var removeElementByValue = $.query.REMOVE('section', 'info');
+> ?action=view&id=123
+var newerQuery2 = $.query.set('testy[]', 'true').set('testy[]', 'false').set('testy[]', 'true');
+> ?action=view&id=123&testy[0]=true&testy[1]=false&testy[2]=true
+var removeElementByValue1 = $.query.REMOVE('testy', 'false');
+> ?action=view&id=123&testy[0]=true&testy[1]=true
 var emptyQuery = $.query.empty();
 > ""
 var stillTheSame = $.query.copy();
