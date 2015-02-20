@@ -10,7 +10,7 @@
 	"deserialize",
 	"serialize"
   ],
-  "version": "2.1.8",
+  "version": "2.2.0",
   "author": {
   	"email": "blair.mitchelmore@gmail.com",
     "name": "Blair Mitchelmore",
