@@ -142,6 +142,9 @@ new function(settings) {
         if (val) {
           var target = this.GET(key);
           if (is(target, Array)) {
+            for (tval in target) {
+                target[tval] = target[tval].toString();
+            }
             var index = $.inArray(val, target);
             if (index >= 0) {
               key = target.splice(index, 1);
