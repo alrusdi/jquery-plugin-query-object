@@ -5,7 +5,7 @@
  * Date: 2009/8/13
  *
  * @author Blair Mitchelmore
- * @version 2.2.0
+ * @version 2.2.1
  *
  **/
 new function(settings) { 
