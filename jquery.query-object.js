@@ -96,7 +96,7 @@ new function(settings) {
             if ($numbers) {
               if (/^[+-]?[0-9]+\.[0-9]*$/.test(val)) // simple float regex
                 val = parseFloat(val);
-              else if (/^[+-]?[0-9]+$/.test(val)) // simple int regex
+              else if (/^[+-]?[1-9][0-9]*$/.test(val)) // simple int regex
                 val = parseInt(val, 10);
             }
             
