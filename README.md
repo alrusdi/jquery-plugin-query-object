@@ -119,7 +119,7 @@ There are now some customizations which can be done, mostly dealing with parsing
 
 ```
 <script type="text/javascript">
-var jQuery.query = { numbers: false, hash: true };
+jQuery.query = { numbers: false, hash: true };
 </script>
 <script type="text/javascript" src="jquery.query.js"></script>
 ```
