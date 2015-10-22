@@ -206,8 +206,9 @@ new function(settings) {
         var i = 0, queryString = [], chunks = [], self = this;
         var encode = function(str) {
           str = str + "";
-          if ($spaces) str = str.replace(/ /g, "+");
-          return encodeURIComponent(str);
+          str = encodeURIComponent(str);
+          if ($spaces) str = str.replace(/%20/g, "+");
+          return str;
         };
         var addFields = function(arr, key, value) {
           if (!is(value) || value === false) return;
