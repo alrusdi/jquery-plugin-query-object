@@ -8,7 +8,7 @@
  * @version 2.2.2
  *
  **/
-new function(settings) { 
+new function(settings) {
   // Various Settings
   var $separator = settings.separator || '&';
   var $spaces = settings.spaces === false ? false : true;
@@ -61,11 +61,11 @@ new function(settings) {
       }
       return target;
     };
-    
+
     var queryObject = function(a) {
       var self = this;
       self.keys = {};
-      
+
       if (a.queryObject) {
         jQuery.each(a.get(), function(key, val) {
           self.SET(key, val);
@@ -75,7 +75,7 @@ new function(settings) {
       }
       return self;
     };
-    
+
     queryObject.prototype = {
       queryObject: true,
       parseNew: function(){
@@ -86,22 +86,22 @@ new function(settings) {
           q = q.replace(/^[?#]/,''); // remove any leading ? || #
           q = q.replace(/[;&]$/,''); // remove any trailing & || ;
           if ($spaces) q = q.replace(/[+]/g,' '); // replace +'s with spaces
-          
+
           jQuery.each(q.split(/[&;]/), function(){
             var key = decodeURIComponent(this.split('=')[0] || "");
             var val = decodeURIComponent(this.split('=')[1] || "");
-            
+
             if (!key) return;
-            
+
             if ($numbers) {
               if (/^[+-]?[0-9]+\.[0-9]*$/.test(val)) // simple float regex
                 val = parseFloat(val);
               else if (/^[+-]?[1-9][0-9]*$/.test(val)) // simple int regex
                 val = parseInt(val, 10);
             }
-            
+
             val = (!val && val !== 0) ? true : val;
-            
+
             self.SET(key, val);
           });
         });
@@ -206,8 +206,7 @@ new function(settings) {
         var i = 0, queryString = [], chunks = [], self = this;
         var encode = function(str) {
           str = str + "";
-          if ($spaces) str = str.replace(/ /g, "+");
-          return encodeURIComponent(str);
+          return encodeURIComponent(str).replace(/%20/g, "+");
         };
         var addFields = function(arr, key, value) {
           if (!is(value) || value === false) return;
@@ -223,22 +222,22 @@ new function(settings) {
             return !base || base == "" ? [key].join("") : [base, "[", key, "]"].join("");
           };
           jQuery.each(obj, function(key, value) {
-            if (typeof value == 'object') 
+            if (typeof value == 'object')
               build(value, newKey(key));
             else
               addFields(chunks, newKey(key), value);
           });
         };
-        
+
         build(this.keys);
-        
+
         if (chunks.length > 0) queryString.push($hash);
         queryString.push(chunks.join($separator));
-        
+
         return queryString.join("");
       }
     };
-    
+
     return new queryObject(location.search, location.hash);
   };
 }(jQuery.query || {}); // Pass in jQuery.query as settings object
