@@ -10,7 +10,7 @@
     "deserialize",
     "serialize"
   ],
-  "version": "2.2.2",
+  "version": "2.2.3",
   "author": "Blair Mitchelmore <blair.mitchelmore@gmail.com> (https://github.com/blairmitchelmore)",
   "licenses": [
     {
