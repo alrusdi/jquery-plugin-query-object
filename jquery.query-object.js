@@ -129,10 +129,12 @@ new function(settings) {
         return target;
       },
       SET: function(key, val) {
-        var value = !is(val) ? null : val;
-        var parsed = parse(key), base = parsed[0], tokens = parsed[1];
-        var target = this.keys[base];
-        this.keys[base] = set(target, tokens.slice(0), value);
+        if(!key.includes("__proto__")){
+          var value = !is(val) ? null : val;
+          var parsed = parse(key), base = parsed[0], tokens = parsed[1];
+          var target = this.keys[base];
+          this.keys[base] = set(target, tokens.slice(0), value);
+        }
         return this;
       },
       set: function(key, val) {
